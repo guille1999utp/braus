@@ -1,4 +1,4 @@
-import { Box, Grid } from '@mui/material';
+import { Box, FormControl, Grid, MenuItem, Select } from '@mui/material';
 import { styled } from '@mui/material/styles';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
@@ -56,7 +56,18 @@ export const Usuarios = () => {
         <input type="text" class="input"/>
         
         <label for="" class="label" style={{marginTop:"40px"}}>CODIGO DE REFERENTE</label>
-        <input type="text" class="input"/>
+        <FormControl fullWidth >
+        <Select
+          labelId="demo-simple-select-label"
+          id="demo-simple-select"
+          label="Codigo"
+          sx={{height: "40px",padding:"0"}}
+        >
+          <MenuItem value={10}>#sebastianMejia</MenuItem>
+          <MenuItem value={20}>#YesicaMopan</MenuItem>
+          <MenuItem value={30}>#SantiagoCorrea</MenuItem>
+        </Select>
+      </FormControl>
         
         <label for="" class="label" style={{marginTop:"40px"}}>BONIFICACION EN % AL NUEVO USUARIO</label>
         <input type="text" class="input"/>

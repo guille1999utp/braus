@@ -1,10 +1,8 @@
 import React from "react";
-import {
-  Routes,
-  Route,
-  BrowserRouter
-} from "react-router-dom";
+import {Routes,Route,BrowserRouter} from "react-router-dom";
+import Catalogo from "../components/catalogos";
 import Header  from "../components/header";
+import { Hombres } from "../components/hombres";
 import Home from "../components/home";
 import { Inicio } from "../components/inicio";
 import Login from "../components/login";
@@ -23,6 +21,8 @@ export default function RoutesPage() {
           <Route path="/home" element={ <Home />} />
           <Route path="/usuarios" element={ <Usuarios />} />
           <Route path="/porcentaje" element={ <Porcentajes />} />
+          <Route path="/Hombres" element={ <Hombres />} />
+          <Route path="/catalogos" element={ <Catalogo />} />
           <Route path="/" element={ <Inicio />} />
     </Routes>
     </BrowserRouter>
