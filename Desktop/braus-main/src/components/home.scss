@@ -1,0 +1,57 @@
+.homeAdmin{
+    width: 100vw;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 20px 30px;
+    box-sizing: border-box;
+    .panelAdmin{
+        width: 20vw;
+        height: 20vw;
+        box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+        min-width: 200px;
+        min-height: 200px;
+        margin-top: 20px;
+        margin-right: 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        transition: 0.3s;
+        .iconHome{
+            margin-bottom: 40px;
+        }
+        p{
+            font-family: 'Montserrat', sans-serif;
+            font-size: 25px;
+            font-weight: 600;
+        }
+        &:hover{
+            cursor: pointer;
+            background: black;
+            color: white;
+            transition: 0.3s;
+        }
+    }
+}
+
+.home{
+    background-color: black;
+    padding-top: 30px;
+    height: 100vh;
+    opacity: 0.9;
+    h2{
+        color: white;
+        text-align: center;
+        font-size: 50px;
+        font-family: 'Montserrat', sans-serif;
+        margin-bottom: 130px;
+    }
+    p{
+        font-size: 140px;
+        text-align: center;
+        font-family: 'Montserrat', sans-serif;
+        color: white;
+    }
+}

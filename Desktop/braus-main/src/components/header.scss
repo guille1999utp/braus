@@ -1,0 +1,56 @@
+.menu-first{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    background-color: black;
+    padding: 20px;
+    align-items: center;
+    border-bottom: 1px solid gray;
+    .redes{
+        display: flex;
+        flex-direction: row;
+        list-style: none;
+        li{
+            margin-left: 20px;
+            a{
+                color: white;
+                text-decoration: none;
+            }
+        }
+    }
+
+    .actiones{
+        .actions{
+        color: white;
+        text-decoration: none;
+        margin-right: 15px;
+    }}
+    .logo{
+        height: 58px;
+        margin-right: 47px;
+    }
+}
+
+.menu-second{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    background-color: black;
+    padding: 10px;
+    align-items: center;
+    .redes{
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;  
+        list-style: none;
+        li{
+            margin-left: 20px;
+        a{
+            color: white;
+            text-decoration: none;
+            font-family: 'Montserrat', sans-serif;
+        }
+        }
+    }
+}
