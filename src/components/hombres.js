@@ -52,9 +52,9 @@ const users = [
 ];
 export const Hombres = () => {
   const [urlmas, setUrl] = useState({
-    secure_url:
+    fotosdescripsion:
       "https://res.cloudinary.com/dmgfep69f/image/upload/v1642034441/tu86rbwmkpjsyk3vcvr0.jpg",
-    public_id: 0,
+      fotosId: 0,
   });
 
   const onFilesave = async (e) => {

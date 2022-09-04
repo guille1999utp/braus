@@ -7,10 +7,10 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import './porcentajes.scss';
 import { CeldaUsers } from './reutilizable/celdaUsers';
-
+import { fetchCToken } from '../helpers/fetchMethods';
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
     [`&.${tableCellClasses.head}`]: {
@@ -46,6 +46,19 @@ const StyledTableCell = styled(TableCell)(({ theme }) => ({
     },
   ]
 export const Usuarios = () => {
+  const [Users, setUsers] = useState([]);
+  useEffect(() => {
+    const funcionRenovacion =  async() => {
+         const res = await fetchCToken('usuarios');
+         if(res.ok){
+          setUsers(res.user);
+         }
+       }
+       funcionRenovacion()
+  }, [])
+
+  console.log(Users)
+
   return (
     <Box sx={{ flexGrow: 1 }}>
     <Grid container spacing={2} sx={{mt:"29px"}}>
@@ -68,12 +81,7 @@ export const Usuarios = () => {
           <MenuItem value={30}>#SantiagoCorrea</MenuItem>
         </Select>
       </FormControl>
-        
-        <label for="" class="label" style={{marginTop:"40px"}}>BONIFICACION EN % AL NUEVO USUARIO</label>
-        <input type="text" class="input"/>
-
-        <label for="" class="label" style={{marginTop:"40px"}}>FECHA DE CREACION</label>
-        <input type="text" class="input"/>
+      
         <button style={{marginTop:"40px",cursor:"pointer"}}>Guardar</button>
         </form>
       </Grid>

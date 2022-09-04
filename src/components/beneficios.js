@@ -1,13 +1,13 @@
 import React from 'react'
 import './beneficios.scss';
 import { AiOutlineClose } from "react-icons/ai";
-const Beneficios = ({fun}) => {
+const Beneficios = ({fun,image}) => {
   return (
     <div className='beneficios'>
         <AiOutlineClose className='iconClose' fontSize={30} color="white"  onClick={()=>fun(false)}/>
-       <div className='beneficiosPantalla'>
+       <img alt='imagen del producto' src={image} className='beneficiosPantalla'>
 
-       </div>
+       </img>
         </div>
   )
 }

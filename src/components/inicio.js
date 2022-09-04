@@ -8,14 +8,13 @@ let navigate = useNavigate();
   return (
     <div className='inicio-info'>
     <section className='banner'>
-        <img src={Logo} className="banner-image" alt='banner'/>    
     </section>
     <div className='content-inicio'>
     <p>este es la letra pequeña de brous</p>
     <h2>Este es el inicio de brous</h2>
     <div className='content-inicio-acciones'>
         <button onClick={()=>navigate("register")}>Activar membresias</button>
-        <button>Catalogo</button>
+        <button onClick={()=>navigate("catalogos")}>Catalogo</button>
     </div>
     </div>
     </div>

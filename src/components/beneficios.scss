@@ -1,14 +1,19 @@
 .beneficios{
     position: fixed;
+    display: flex;
     width: 100vw;
-    height: 100vh;
+    height: 100vh;    
+    flex-direction: column;
+    justify-content: center;
+    top: 0;
+    left: 0;
     background: linear-gradient(rgba(5,7,12,.9),rgba(5,7,12,.9));
+    z-index: 30;
     .beneficiosPantalla{
+        max-height: 90vh;
         margin: auto;
-        margin-top: 100px;
-        width: 700px;
-        height: 500px;
-        background-color: white;
+        max-width: 1000px;
+        z-index: 20;
     }
 
     .iconClose{

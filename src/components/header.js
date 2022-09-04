@@ -44,7 +44,7 @@ const list = (anchor) => (
   >
     
     <List>
-        <ListItem key={"Catalogo"} disablePadding onClick={()=> redirect("/categorias/todos")} sx={{":hover":{opacity:"0.58"}}}>
+        <ListItem key={"Catalogo"} disablePadding onClick={()=> redirect("/catalogos")} sx={{":hover":{opacity:"0.58"}}}>
           <ListItemButton>
             <ListItemIcon>
             <AiOutlineShopping color='white' />
@@ -109,7 +109,7 @@ const list = (anchor) => (
       </div>
       <div className='menu-second' style={{backgroundColor:(location.pathname === "/")? "rgba(0,0,0,0)" :"black"}}>
       <ul className="redes">
-       <li><a href='/catalogos' style={{marginLeft:"91px"}}>Catalogos</a></li>
+       <li><a href='/catalogos' style={{marginLeft:"8px"}}>Catalogos</a></li>
       </ul>
       </div>
     </nav>

@@ -1,5 +1,5 @@
 .homeAdmin{
-    width: 100vw;
+    width: 100%;
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
@@ -40,18 +40,30 @@
     background-color: black;
     padding-top: 30px;
     height: 100vh;
-    opacity: 0.9;
-    h2{
+    display: flex;
+    flex-direction: column;
+    .user{
         color: white;
         text-align: center;
         font-size: 50px;
         font-family: 'Montserrat', sans-serif;
-        margin-bottom: 130px;
+        font-weight: 400;
     }
     p{
         font-size: 140px;
         text-align: center;
         font-family: 'Montserrat', sans-serif;
         color: white;
+        font-weight: 400;
+    }
+    button{
+        margin: 40px auto;
+        width: 400px;
+        padding: 10px 5px;
+        color:black;
+        background-color: white;
+        border-radius: 10px;
+        font-size: 27px;
+        font-weight: 600;
     }
 }

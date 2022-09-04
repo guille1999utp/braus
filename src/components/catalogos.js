@@ -1,42 +1,72 @@
 import React, { useState } from "react";
-import "./home.scss";
-import { AiOutlineUserAdd, AiOutlinePercentage } from "react-icons/ai";
-import { BsGenderMale } from "react-icons/bs";
-import { useNavigate } from "react-router-dom";
-import { RiShoppingBagLine } from "react-icons/ri";
+import "./catalogo.scss";
+import Beneficios from "./beneficios";
+import useMediaQuery from '@mui/material/useMediaQuery';
+
 const Catalogo = () => {
-  const [Admin, setAdmin] = useState(true);
-  const navigate = useNavigate();
-  const onClick = (location) => {
-    console.log(location);
-    navigate(`../${location}`);
-  };
+  const [imageProducto, setImageProducto] = useState("https://imgs.search.brave.com/W7yj7ewexsiE-QRxVkTaLKETwHq6YDMnXHAXZvaDcVQ/rs:fit:1200:1200:1/g:ce/aHR0cHM6Ly9zdGF0/aWMuc2FvcGF1bG9t/YW5pYS5jb20uYnIv/cHJvZHV0b3MvY2Ft/aXNhLXNhby1wYXVs/by1qdXZlbmlsLTE5/ODAtcmV0cm8tbWFu/aWEvMTQvVDcwLTA2/NTQtMDE0L1Q3MC0w/NjU0LTAxNF96b29t/MS5qcGc_dHM9MTU3/MzA3MDg4MyY");
+  const [ViewImage, setViewImage] = useState(false);
+  const matches = useMediaQuery('(min-width:500px)');
+
   return (
     <>
-      {Admin ? (
-        <div className="homeAdmin">
-          <div className="panelAdmin" onClick={() => onClick("Usuarios")}>
-            <AiOutlineUserAdd fontSize={90} className="iconHome" />
-            <p>Usuarios</p>
+
+        {(ViewImage)?<Beneficios image={imageProducto} fun={setViewImage} />:null}
+        <div className="homeAdmin" style={{justifyContent:matches?"center":"space-between",padding:matches?"20px":"2px"}}>
+          <div className="producto">
+            <img onClick={()=>setViewImage(true)} src="https://imgs.search.brave.com/W7yj7ewexsiE-QRxVkTaLKETwHq6YDMnXHAXZvaDcVQ/rs:fit:1200:1200:1/g:ce/aHR0cHM6Ly9zdGF0/aWMuc2FvcGF1bG9t/YW5pYS5jb20uYnIv/cHJvZHV0b3MvY2Ft/aXNhLXNhby1wYXVs/by1qdXZlbmlsLTE5/ODAtcmV0cm8tbWFu/aWEvMTQvVDcwLTA2/NTQtMDE0L1Q3MC0w/NjU0LTAxNF96b29t/MS5qcGc_dHM9MTU3/MzA3MDg4MyY"></img>
+            <p>camisa de cuadros </p>
+            <p style={{marginTop:"0"}}>{"$" + new Intl.NumberFormat().format(20500)}</p>
           </div>
-          <div className="panelAdmin" onClick={() => onClick("porcentaje")}>
-            <AiOutlinePercentage fontSize={90} className="iconHome" />
-            <p>Porcentajes</p>
+          <div className="producto">
+            <img onClick={()=>setViewImage(true)} src="https://imgs.search.brave.com/W7yj7ewexsiE-QRxVkTaLKETwHq6YDMnXHAXZvaDcVQ/rs:fit:1200:1200:1/g:ce/aHR0cHM6Ly9zdGF0/aWMuc2FvcGF1bG9t/YW5pYS5jb20uYnIv/cHJvZHV0b3MvY2Ft/aXNhLXNhby1wYXVs/by1qdXZlbmlsLTE5/ODAtcmV0cm8tbWFu/aWEvMTQvVDcwLTA2/NTQtMDE0L1Q3MC0w/NjU0LTAxNF96b29t/MS5qcGc_dHM9MTU3/MzA3MDg4MyY"></img>
+            <p>camisa de cuadros </p>
+            <p style={{marginTop:"0"}}>{"$" + new Intl.NumberFormat().format(20500)}</p>
+          </div> <div className="producto">
+            <img onClick={()=>setViewImage(true)} src="https://imgs.search.brave.com/W7yj7ewexsiE-QRxVkTaLKETwHq6YDMnXHAXZvaDcVQ/rs:fit:1200:1200:1/g:ce/aHR0cHM6Ly9zdGF0/aWMuc2FvcGF1bG9t/YW5pYS5jb20uYnIv/cHJvZHV0b3MvY2Ft/aXNhLXNhby1wYXVs/by1qdXZlbmlsLTE5/ODAtcmV0cm8tbWFu/aWEvMTQvVDcwLTA2/NTQtMDE0L1Q3MC0w/NjU0LTAxNF96b29t/MS5qcGc_dHM9MTU3/MzA3MDg4MyY"></img>
+            <p>camisa de cuadros </p>
+            <p style={{marginTop:"0"}}>{"$" + new Intl.NumberFormat().format(20500)}</p>
+          </div><div className="producto">
+            <img onClick={()=>setViewImage(true)} src="https://imgs.search.brave.com/W7yj7ewexsiE-QRxVkTaLKETwHq6YDMnXHAXZvaDcVQ/rs:fit:1200:1200:1/g:ce/aHR0cHM6Ly9zdGF0/aWMuc2FvcGF1bG9t/YW5pYS5jb20uYnIv/cHJvZHV0b3MvY2Ft/aXNhLXNhby1wYXVs/by1qdXZlbmlsLTE5/ODAtcmV0cm8tbWFu/aWEvMTQvVDcwLTA2/NTQtMDE0L1Q3MC0w/NjU0LTAxNF96b29t/MS5qcGc_dHM9MTU3/MzA3MDg4MyY"></img>
+            <p>camisa de cuadros </p>
+            <p style={{marginTop:"0"}}>{"$" + new Intl.NumberFormat().format(20500)}</p>
           </div>
-          <div className="panelAdmin" onClick={() => onClick("Hombres")}>
-            <RiShoppingBagLine fontSize={90} className="iconHome" />
-            <p>Catalogo</p>
+          <div className="producto">
+            <img onClick={()=>setViewImage(true)} src="https://imgs.search.brave.com/W7yj7ewexsiE-QRxVkTaLKETwHq6YDMnXHAXZvaDcVQ/rs:fit:1200:1200:1/g:ce/aHR0cHM6Ly9zdGF0/aWMuc2FvcGF1bG9t/YW5pYS5jb20uYnIv/cHJvZHV0b3MvY2Ft/aXNhLXNhby1wYXVs/by1qdXZlbmlsLTE5/ODAtcmV0cm8tbWFu/aWEvMTQvVDcwLTA2/NTQtMDE0L1Q3MC0w/NjU0LTAxNF96b29t/MS5qcGc_dHM9MTU3/MzA3MDg4MyY"></img>
+            <p>camisa de cuadros </p>
+            <p style={{marginTop:"0"}}>{"$" + new Intl.NumberFormat().format(20500)}</p>
+          </div> <div className="producto">
+            <img onClick={()=>setViewImage(true)} src="https://imgs.search.brave.com/W7yj7ewexsiE-QRxVkTaLKETwHq6YDMnXHAXZvaDcVQ/rs:fit:1200:1200:1/g:ce/aHR0cHM6Ly9zdGF0/aWMuc2FvcGF1bG9t/YW5pYS5jb20uYnIv/cHJvZHV0b3MvY2Ft/aXNhLXNhby1wYXVs/by1qdXZlbmlsLTE5/ODAtcmV0cm8tbWFu/aWEvMTQvVDcwLTA2/NTQtMDE0L1Q3MC0w/NjU0LTAxNF96b29t/MS5qcGc_dHM9MTU3/MzA3MDg4MyY"></img>
+            <p>camisa de cuadros </p>
+            <p style={{marginTop:"0"}}>{"$" + new Intl.NumberFormat().format(20500)}</p>
+          </div><div className="producto">
+            <img onClick={()=>setViewImage(true)} src="https://imgs.search.brave.com/W7yj7ewexsiE-QRxVkTaLKETwHq6YDMnXHAXZvaDcVQ/rs:fit:1200:1200:1/g:ce/aHR0cHM6Ly9zdGF0/aWMuc2FvcGF1bG9t/YW5pYS5jb20uYnIv/cHJvZHV0b3MvY2Ft/aXNhLXNhby1wYXVs/by1qdXZlbmlsLTE5/ODAtcmV0cm8tbWFu/aWEvMTQvVDcwLTA2/NTQtMDE0L1Q3MC0w/NjU0LTAxNF96b29t/MS5qcGc_dHM9MTU3/MzA3MDg4MyY"></img>
+            <p>camisa de cuadros </p>
+            <p style={{marginTop:"0"}}>{"$" + new Intl.NumberFormat().format(20500)}</p>
+          </div>
+          <div className="producto">
+            <img onClick={()=>setViewImage(true)} src="https://imgs.search.brave.com/W7yj7ewexsiE-QRxVkTaLKETwHq6YDMnXHAXZvaDcVQ/rs:fit:1200:1200:1/g:ce/aHR0cHM6Ly9zdGF0/aWMuc2FvcGF1bG9t/YW5pYS5jb20uYnIv/cHJvZHV0b3MvY2Ft/aXNhLXNhby1wYXVs/by1qdXZlbmlsLTE5/ODAtcmV0cm8tbWFu/aWEvMTQvVDcwLTA2/NTQtMDE0L1Q3MC0w/NjU0LTAxNF96b29t/MS5qcGc_dHM9MTU3/MzA3MDg4MyY"></img>
+            <p>camisa de cuadros </p>
+            <p style={{marginTop:"0"}}>{"$" + new Intl.NumberFormat().format(20500)}</p>
+          </div> <div className="producto">
+            <img onClick={()=>setViewImage(true)} src="https://imgs.search.brave.com/W7yj7ewexsiE-QRxVkTaLKETwHq6YDMnXHAXZvaDcVQ/rs:fit:1200:1200:1/g:ce/aHR0cHM6Ly9zdGF0/aWMuc2FvcGF1bG9t/YW5pYS5jb20uYnIv/cHJvZHV0b3MvY2Ft/aXNhLXNhby1wYXVs/by1qdXZlbmlsLTE5/ODAtcmV0cm8tbWFu/aWEvMTQvVDcwLTA2/NTQtMDE0L1Q3MC0w/NjU0LTAxNF96b29t/MS5qcGc_dHM9MTU3/MzA3MDg4MyY"></img>
+            <p>camisa de cuadros </p>
+            <p style={{marginTop:"0"}}>{"$" + new Intl.NumberFormat().format(20500)}</p>
+          </div><div className="producto">
+            <img onClick={()=>setViewImage(true)} src="https://imgs.search.brave.com/W7yj7ewexsiE-QRxVkTaLKETwHq6YDMnXHAXZvaDcVQ/rs:fit:1200:1200:1/g:ce/aHR0cHM6Ly9zdGF0/aWMuc2FvcGF1bG9t/YW5pYS5jb20uYnIv/cHJvZHV0b3MvY2Ft/aXNhLXNhby1wYXVs/by1qdXZlbmlsLTE5/ODAtcmV0cm8tbWFu/aWEvMTQvVDcwLTA2/NTQtMDE0L1Q3MC0w/NjU0LTAxNF96b29t/MS5qcGc_dHM9MTU3/MzA3MDg4MyY"></img>
+            <p>camisa de cuadros </p>
+            <p style={{marginTop:"0"}}>{"$" + new Intl.NumberFormat().format(20500)}</p>
+          </div>
+          <div className="producto">
+            <img src="https://imgs.search.brave.com/W7yj7ewexsiE-QRxVkTaLKETwHq6YDMnXHAXZvaDcVQ/rs:fit:1200:1200:1/g:ce/aHR0cHM6Ly9zdGF0/aWMuc2FvcGF1bG9t/YW5pYS5jb20uYnIv/cHJvZHV0b3MvY2Ft/aXNhLXNhby1wYXVs/by1qdXZlbmlsLTE5/ODAtcmV0cm8tbWFu/aWEvMTQvVDcwLTA2/NTQtMDE0L1Q3MC0w/NjU0LTAxNF96b29t/MS5qcGc_dHM9MTU3/MzA3MDg4MyY"></img>
+            <p>camisa de cuadros </p>
+            <p style={{marginTop:"0"}}>{"$" + new Intl.NumberFormat().format(20500)}</p>
+          </div> <div className="producto">
+            <img src="https://imgs.search.brave.com/W7yj7ewexsiE-QRxVkTaLKETwHq6YDMnXHAXZvaDcVQ/rs:fit:1200:1200:1/g:ce/aHR0cHM6Ly9zdGF0/aWMuc2FvcGF1bG9t/YW5pYS5jb20uYnIv/cHJvZHV0b3MvY2Ft/aXNhLXNhby1wYXVs/by1qdXZlbmlsLTE5/ODAtcmV0cm8tbWFu/aWEvMTQvVDcwLTA2/NTQtMDE0L1Q3MC0w/NjU0LTAxNF96b29t/MS5qcGc_dHM9MTU3/MzA3MDg4MyY"></img>
+            <p>camisa de cuadros </p>
+            <p style={{marginTop:"0"}}>{"$" + new Intl.NumberFormat().format(20500)}</p>
           </div>
         </div>
-      ) : (
-        <div className="home">
-          <h2>#GUille1999</h2>
-          <p>50%</p>
-          <p style={{ marginTop: "-7px", fontSize: "18px" }}>
-            Porcentaje acumulado
-          </p>
-        </div>
-      )}
     </>
   );
 };
