@@ -12,7 +12,7 @@ const Home = () => {
   }
   return (
     <>
-    {!(User.rol === "Admin")?<div className='homeAdmin'>
+    {(User.rol === "Admin")?<div className='homeAdmin'>
 
     <div className='panelAdmin' onClick={()=>onClick("Usuarios")}>
       <AiOutlineUserAdd fontSize={90} className="iconHome"/>

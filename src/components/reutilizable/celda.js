@@ -4,6 +4,8 @@ import TableRow from '@mui/material/TableRow';
 import TableCell, { tableCellClasses } from '@mui/material/TableCell';
 import { BsPencilFill } from "react-icons/bs";
 import { AiFillCloseCircle,AiFillSave } from "react-icons/ai";
+import Swal from 'sweetalert2';
+import { fetchCToken } from '../../helpers/fetchMethods';
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
     [`&.${tableCellClasses.head}`]: {
@@ -25,24 +27,76 @@ const StyledTableCell = styled(TableCell)(({ theme }) => ({
   }));
 
 
-export const Celda = ({user}) => {
+export const Celda = ({user,func}) => {
     const [editar, setEditar] = useState(false);
-    const [Number, setNumber] = useState(user.porcent);
+    const [porcentaje, setNumber] = useState(user.porcentaje);
 
     const onChangeMensaje = (e) => {
         const { value } = e.target;
         setNumber(value);
       };
+
+      const editPorcentaje = async() => {
+        setEditar(!editar);
+        const editUser = await fetchCToken('usuarios', {id:user.uid,porcentaje} , 'PUT');
+        if(editUser.ok){
+          func(editUser.user)
+          const Toast = Swal.mixin({
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 3000,
+            timerProgressBar: true,
+            didOpen: (toast) => {
+              toast.addEventListener('mouseenter', Swal.stopTimer)
+              toast.addEventListener('mouseleave', Swal.resumeTimer)
+            }
+          })
+          Toast.fire({
+            icon: 'success',
+            title: "porcentaje modificado correctamente"
+          })
+        }else{
+          const Toast = Swal.mixin({
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 3000,
+            timerProgressBar: true,
+            didOpen: (toast) => {
+              toast.addEventListener('mouseenter', Swal.stopTimer)
+              toast.addEventListener('mouseleave', Swal.resumeTimer)
+            }
+          })
+          if(editUser.errors){
+            Toast.fire({
+              icon: 'error',
+              title: editUser.errors.msg
+            })
+          }else{
+            Toast.fire({
+              icon: 'error',
+              title: editUser.msg
+            })
+          }
+        }
+    
+          };
     
   return (
-    <StyledTableRow key={user.user}>
+    <StyledTableRow key={user.usuario}>
     <StyledTableCell align="center">
-      {user.user}
+      {user.usuario}
     </StyledTableCell>
-    <StyledTableCell align="center">{(editar)?<input type="number" onChange={onChangeMensaje} value={Number}/>:user.porcent}</StyledTableCell>
+    <StyledTableCell align="center">{(editar)?<input type="number" onChange={onChangeMensaje} value={porcentaje}/>:user.porcentaje}</StyledTableCell>
     <StyledTableCell align="center">{(editar)?<div>
-        <AiFillSave  fontSize={20} style={{cursor:"pointer",marginRight:"14px"}} color="blue" onClick={()=>setEditar(!editar)}/>
-        <AiFillCloseCircle fontSize={20} style={{cursor:"pointer"}} color="red" onClick={()=>setEditar(!editar)}/></div>:<BsPencilFill style={{cursor:"pointer"}} fontSize={20} color="green" onClick={()=>setEditar(!editar)}/>}</StyledTableCell>
+        <AiFillSave  fontSize={20} style={{cursor:"pointer",marginRight:"14px"}} color="blue" onClick={editPorcentaje}/>
+        <AiFillCloseCircle fontSize={20} style={{cursor:"pointer"}} color="red" onClick={()=>setEditar(!editar)}/></div>:<BsPencilFill style={{cursor:"pointer"}} fontSize={20} color="green" onClick={
+          ()=>{
+            setNumber(user.porcentaje);
+            setEditar(!editar) 
+          }
+          }/>}</StyledTableCell>
         
   </StyledTableRow>
   )

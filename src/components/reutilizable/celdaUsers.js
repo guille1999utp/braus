@@ -28,12 +28,12 @@ export const CeldaUsers = ({user}) => {
   return (
     <StyledTableRow key={user.user}>
     <StyledTableCell align="center">
-      {user.user}
+      {user.usuario}
     </StyledTableCell>
     <StyledTableCell align="center">
-      {user.referidos}
+      {user.usuariosRef}
     </StyledTableCell>
-    <StyledTableCell align="center">{user.porcent}</StyledTableCell>
+    <StyledTableCell align="center">{user.porcentaje}</StyledTableCell>
     <StyledTableCell align="center" ><button style={{padding:"4px 14px",borderRadius:"3px",border:"solid 1px black",background:"black",color:"white",cursor:"pointer"}}>Borrar</button></StyledTableCell>
         
   </StyledTableRow>

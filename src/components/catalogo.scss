@@ -1,6 +1,5 @@
 .producto{
         cursor: pointer;
-        min-width: 250px;
         width: calc(20% - 60px);
         box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
         display: flex;
@@ -10,6 +9,7 @@
         transition: 0.3s;
         margin-right: 30px;
         margin-top: 20px;
+        min-width: 250px;
        img{
         width: 100%;
        }
@@ -27,10 +27,11 @@
         }
        }
     }
-    @media screen and (min-width:500px){
+    @media screen and (max-width:500px){
         .producto{
                 width: 49%;
                 margin-right: 0px;
                 margin-top: 0px;
+                min-width: auto;
         }
     }
