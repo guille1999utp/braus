@@ -13,8 +13,8 @@ let navigate = useNavigate();
     <p>este es la letra pequeña de brous</p>
     <h2>Este es el inicio de brous</h2>
     <div className='content-inicio-acciones'>
-        <button onClick={()=>navigate("register")}>Activar membresias</button>
-        <button onClick={()=>navigate("catalogos")}>Catalogo</button>
+        <button onClick={()=>navigate("register")}>ACTIVAR MEMBRESIA</button>
+        <button onClick={()=>navigate("catalogos")}>CATALOGO</button>
     </div>
     </div>
     </div>

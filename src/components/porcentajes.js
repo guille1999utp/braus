@@ -36,15 +36,15 @@ export const Porcentajes = () => {
   const cargarProductos = useCallback(
     async() => {
       const UsersFetchs = await fetchstoken(`usuarios`);
-      const InfoFetchs = await fetchstoken(`info`);
+      const InfoFetchs = await fetchCToken(`info`);
 
       if(UsersFetchs.ok && InfoFetchs.ok ){
         console.log(InfoFetchs)
         setUser(UsersFetchs.user.reverse());
         setForm({
-          porcentaje1:InfoFetchs.info.porcentaje1,
-          porcentaje2:InfoFetchs.info.porcentaje2,
-          porcentaje3:InfoFetchs.info.porcentaje3
+          porcentaje1:InfoFetchs.info[0].porcentaje1,
+          porcentaje2:InfoFetchs.info[0].porcentaje2,
+          porcentaje3:InfoFetchs.info[0].porcentaje3
         })
       }
     },[]
@@ -108,6 +108,8 @@ export const Porcentajes = () => {
   const userModify = (user) =>{
     setUser([user,...users.filter(userCompare=>userCompare.uid !== user.uid)])
   } 
+
+  console.log(users)
   return (
     <Box sx={{ flexGrow: 1 }}>
     <Grid container spacing={2} sx={{mt:"29px"}}>
