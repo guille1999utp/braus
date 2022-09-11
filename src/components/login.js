@@ -43,7 +43,7 @@ import Swal from 'sweetalert2'
       })
       Toast.fire({
         icon: 'error',
-        title: resultlogin.msg
+        title: resultlogin.errors.msg
       })
     }
       };

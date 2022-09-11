@@ -23,3 +23,15 @@
         cursor: pointer;
     }
 }
+
+
+@media screen and (max-width:500px){
+    .beneficios{
+ .beneficiosPantalla{
+            max-height: 90vh;
+            margin: auto;
+            max-width: 90vw;
+            z-index: 20;
+        }
+    }
+}

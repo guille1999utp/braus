@@ -7,11 +7,19 @@
     align-items: center;
     border-bottom: 1px solid gray;
     .redes{
+        position: fixed;
         display: flex;
         flex-direction: row;
         list-style: none;
+        bottom: 0;
+        background: black;
+        height: 47px;
+        width: 100%;
+        left: 0;
+        align-items: center;
+        z-index: -1;
         li{
-            margin-left: 20px;
+            margin: 0 20px;
             a{
                 color: white;
                 text-decoration: none;
@@ -27,11 +35,26 @@
     }}
     .logo{
         height: 58px;
-        margin-right: 133px;
     }
 }
 
 .MuiPaper-root.MuiPaper-elevation.MuiPaper-elevation16.MuiDrawer-paper.MuiDrawer-paperAnchorLeft{
 top: 101px;
 height: calc(100% - 101px);
-} 
+}     
+.MuiDrawer-root.MuiDrawer-modal.MuiModal-root{
+    .MuiBackdrop-root{
+    background-color: rgba(0, 0, 0, 0);
+    }
+}
+@media screen and (max-width:500px){
+    .MuiPaper-root.MuiPaper-elevation.MuiPaper-elevation16.MuiDrawer-paper.MuiDrawer-paperAnchorLeft{
+        top: 79px;
+        height: calc(100% - 126px);
+        }
+    .menu-first{
+        .logo{
+            height: 35px;
+        }
+    }
+}

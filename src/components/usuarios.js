@@ -25,23 +25,20 @@ const StyledTableCell = styled(TableCell)(({ theme }) => ({
 
 export const Usuarios = () => {
   const [Users, setUsers] = useState([]);
-  const [UsersCreates, setUsersCreates] = useState([]);
   const [formUser, setForm] = useState({
     usuario: "",
     referente: "",
   });
   useEffect(() => {
     const funcionRenovacion = async () => {
-      const creates = await fetchCToken("usuariosCreados");
       const res = await fetchCToken("usuarios");
-      if (res.ok && creates.ok) {
+      if (res.ok ) {
         setUsers(res.user.reverse());
-        setUsersCreates(creates.user.reverse())
       }
     };
     funcionRenovacion();
   }, []);
-
+  console.log("rep")
   const createUser = async (e) => {
     e.preventDefault();    
     const createU = await fetchCToken("user", formUser, "POST");
@@ -61,7 +58,9 @@ export const Usuarios = () => {
         icon: "success",
         title: "se creo el usuario con exito",
       });
-      setUsersCreates([createU.newuser,...UsersCreates])
+  
+      const res = await fetchCToken("usuarios");
+      setUsers(res.user.reverse())
       setForm({
         usuario: "",
         referente: "",
@@ -99,13 +98,11 @@ export const Usuarios = () => {
 
   const filterUSer = (userFilter) => {
     setUsers(Users.filter((user)=>user.usuario !== userFilter))
-    setUsersCreates(UsersCreates.filter((user)=>user.usuario !== userFilter))
   }
-  console.log(UsersCreates)
   return (
-    <Box sx={{ flexGrow: 1 }}>
-      <Grid container spacing={2} sx={{ mt: "29px" }}>
-        <Grid item xs={6} md={4} className="grid-comisiones">
+    <Box sx={{ flexGrow: 1,margin:"64px 0" }}>
+      <Grid container spacing={{ xs: 1, md: 2 }} columns={{ xs: 4, md: 12 }} >
+        <Grid item xs={4} md={4} className="grid-comisiones" >
           <h2>Creacion</h2>
           <form className="form-porcentaje" onSubmit={createUser}>
             <label for="" class="label" style={{ marginTop: "40px" }}>
@@ -141,31 +138,13 @@ export const Usuarios = () => {
             </button>
           </form>
 
-          <h2 style={{ marginBottom: "40px" }}>Usuarios Creados</h2>
-
-<TableContainer sx={{margin:"auto",width:"90%"}} component={Paper}>
-  <Table aria-label="customized table">
-    <TableHead>
-      <TableRow>
-        <StyledTableCell align="center">Usuario</StyledTableCell>
-        <StyledTableCell align="center">Acciones</StyledTableCell>
-      </TableRow>
-    </TableHead>
-    <TableBody>
-      {UsersCreates.map((user) => (
-        <CeldaUsers user={user} func={filterUSer} userRegister={false}/>
-      ))}
-    </TableBody>
-  </Table>
-</TableContainer>
           
         </Grid>
         <Grid
           item
-          xs={6}
+          xs={4}
           md={8}
           className="grid-comisiones"
-          sx={{ padding: "0 40px !important" }}
         >
           <h2 style={{ marginBottom: "40px" }}>Usuarios Registrados</h2>
 

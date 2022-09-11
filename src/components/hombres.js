@@ -78,7 +78,6 @@ export const Hombres = () => {
     let productoNew={}
     if(agregarfotos.secure_url !== "https://res.cloudinary.com/dmgfep69f/image/upload/v1642034441/tu86rbwmkpjsyk3vcvr0.jpg"){
       const url = await UploadPhoto(agregarfotos);
-      console.log(url)
       const res = {
         ...Form,
         fotosdescripsion:url.secure_url,
@@ -89,7 +88,8 @@ export const Hombres = () => {
       productoNew = await fetchCToken('producto', Form , 'POST');
     }
     if(productoNew.ok){
-      setProductos([productoNew.newProd,...productos])
+      console.log(productoNew)
+      setProductos(productoNew.newProd.reverse())
       const Toast = Swal.mixin({
         toast: true,
         position: 'top-end',
@@ -132,14 +132,19 @@ export const Hombres = () => {
       };
 
       const deletProduct = (id) =>{
-        setProductos([...productos.filter((produc)=>produc.pid !== id)])
+        const filter = productos.filter((produc)=>{
+          console.log(produc.pid, id)
+          return produc.pid !== id
+        })
+        console.log(filter)
+        setProductos(filter)
       } 
 
 
   return (
-    <Box sx={{ flexGrow: 1 }}>
-      <Grid container spacing={2} sx={{ mt: "29px" }}>
-        <Grid item xs={6} md={4} className="grid-comisiones">
+    <Box sx={{ flexGrow: 1 ,margin:"64px 0"}}>
+      <Grid container spacing={{ xs: 1, md: 2 }} columns={{ xs: 4, md: 12 }} >
+        <Grid item xs={4} md={4}  className="grid-comisiones">
           <h2>Creacion</h2>
           <form className="form-porcentaje" onSubmit={onSubmit}>
             <label for="" class="label" style={{ marginTop: "40px" }}>
@@ -174,10 +179,9 @@ export const Hombres = () => {
         </Grid>
         <Grid
           item
-          xs={6}
+          xs={4}
           md={8}
           className="grid-comisiones"
-          sx={{ padding: "0 40px !important" }}
         >
           <h2 style={{ marginBottom: "40px" }}>Productos Subidos</h2>
 
@@ -192,9 +196,9 @@ export const Hombres = () => {
                 </TableRow>
               </TableHead>
               <TableBody>
-                {productos.map((producto,index) => (
-                  <CeldaProductos producto={producto} idProducto={index} func={deletProduct}/>
-                ))}
+                {
+                productos.map((producto,index) => <CeldaProductos key={producto.pid} producto={producto} idProducto={index} func={deletProduct}/>)
+                }
               </TableBody>
             </Table>
           </TableContainer>

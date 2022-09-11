@@ -4,6 +4,7 @@ import TableRow from "@mui/material/TableRow";
 import TableCell, { tableCellClasses } from "@mui/material/TableCell";
 import { fetchCToken } from "../../helpers/fetchMethods";
 import Swal from "sweetalert2";
+import {UploadPhoto} from "../../helpers/cloudinaryUpload";
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
@@ -26,10 +27,19 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
 
 export const CeldaProductos = ({ producto, idProducto,func }) => {
   const [editar, setEditar] = useState(false);
+  const [ImageCapture, setImageCapture] = useState({
+    image:{
+      fotosdescripsion:producto.fotosdescripsion,
+      fotosId:producto.fotosId
+          },
+    info:{
+    titulo: producto.titulo,
+    precio: producto.precio,
+    }
+});
   const [urlmas, setUrl] = useState({
-    secure_url:
-      "https://res.cloudinary.com/dmgfep69f/image/upload/v1642034441/tu86rbwmkpjsyk3vcvr0.jpg",
-    public_id: 0,
+    fotosdescripsion:producto.fotosdescripsion,
+    fotosId:producto.fotosId
   });
 
   const [form, setForm] = useState({
@@ -48,6 +58,70 @@ export const CeldaProductos = ({ producto, idProducto,func }) => {
   const onFile = () => {
     document.querySelector(`#fileproducto${idProducto}`).click();
   };
+
+  const guardar = async() =>{
+    const Toast = Swal.mixin({
+      toast: true,
+      position: 'top-end',
+      showConfirmButton: false,
+      timer: 3000,
+      timerProgressBar: true,
+      didOpen: (toast) => {
+        toast.addEventListener('mouseenter', Swal.stopTimer)
+        toast.addEventListener('mouseleave', Swal.resumeTimer)
+      }
+    })
+      let url = {
+        secure_url: producto.fotosdescripsion,
+        public_id: producto.fotosId,
+        };
+      if(((!!urlmas.fotosId)?urlmas.fotosId:null) === urlmas.fotosId || urlmas.fotosId === 0){ 
+       }else{
+        url = await UploadPhoto(urlmas);
+       }
+        const bodyRes = {
+          ...form,
+          fotosdescripsion: url.secure_url,
+          fotosId: url.public_id,
+          id:producto.pid
+        }
+        const res = await fetchCToken('producto',bodyRes,"PUT");
+      
+        if(res.ok){
+          Toast.fire({
+            icon: 'success',
+            title: 'Informacion Guardada'
+          })  
+          setUrl({
+            fotosdescripsion: url.secure_url,
+            fotosId: url.public_id
+        })
+        setImageCapture({
+          info:{
+            titulo: form.titulo,
+            precio: form.precio,
+          },
+          image:{
+            fotosdescripsion: url.secure_url,
+            fotosId: url.public_id
+          }
+          
+      })
+        }else{
+          Toast.fire({
+            icon: 'error',
+            title: res.errors.msg
+          })  
+          setForm({
+            titulo: producto.titulo,
+            precio: producto.precio,
+          })
+        }
+        
+        setEditar(!editar)
+        
+      }
+  
 
   const eliminarproducto = () => {
     Swal.fire({
@@ -85,12 +159,12 @@ export const CeldaProductos = ({ producto, idProducto,func }) => {
   };
 
   return (
-    <StyledTableRow key={producto.foto}>
+    <StyledTableRow >
       <StyledTableCell align="center">
         <img
-          src={producto.fotosdescripsion}
+          src={urlmas.fotosdescripsion}
           width="200"
-          onClick={onFile}
+          onClick={editar? onFile : null}
           style={{ cursor: "pointer" }}
         ></img>
       </StyledTableCell>
@@ -103,7 +177,7 @@ export const CeldaProductos = ({ producto, idProducto,func }) => {
             value={form.titulo}
           />
         ) : (
-          producto.titulo
+          form.titulo
         )}
       </StyledTableCell>
       <StyledTableCell align="center">
@@ -115,7 +189,7 @@ export const CeldaProductos = ({ producto, idProducto,func }) => {
             value={form.precio}
           />
         ) : (
-          `$${new Intl.NumberFormat().format(parseInt(producto.precio))}`
+          `$${new Intl.NumberFormat().format(parseInt(form.precio))}`
         )}
       </StyledTableCell>
       <StyledTableCell align="center">
@@ -161,11 +235,19 @@ export const CeldaProductos = ({ producto, idProducto,func }) => {
                 color: "white",
                 cursor: "pointer",
               }}
+              onClick={guardar}
             >
               Guardar
             </button>
             <button
-              onClick={() => setEditar(!editar)}
+              onClick={() => {
+                setUrl(ImageCapture.image)
+                setForm({
+                  titulo: ImageCapture.info.titulo,
+                  precio: ImageCapture.info.precio,
+                })
+                setEditar(!editar)
+              }}
               style={{
                 marginLeft: "20px",
                 padding: "4px 14px",

@@ -25,6 +25,7 @@ import { fetchstoken } from '../helpers/fetchMethods';
   const onSubmit = async(e) => {
     e.preventDefault();
     const resultlogin = await fetchstoken('register', Form , 'POST');
+    console.log(resultlogin)
     if(resultlogin.ok){
      const {__v,password,creacion,correo,...state} = resultlogin.newuser;
      localStorage.setItem('token',resultlogin.token);
@@ -44,7 +45,7 @@ import { fetchstoken } from '../helpers/fetchMethods';
       })
       Toast.fire({
         icon: 'error',
-        title: resultlogin.msg
+        title: resultlogin.errors.msg
       })
     }
       };

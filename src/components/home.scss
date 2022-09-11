@@ -67,3 +67,31 @@
         font-weight: 600;
     }
 }
+.grid-comisiones{
+    padding: 0 40px !important;
+}
+
+
+@media screen and (max-width:500px){
+    .homeAdmin{
+            margin-bottom: 49px;
+            .panelAdmin{
+            margin: 9px auto;
+        }
+    }
+    
+    .home{
+        height: calc(100vh - 180px);
+        padding: 30px;
+        .user{
+            font-size: 34px;
+        }
+        p{
+            font-size: 100px;
+        }
+        button{
+            width: 75%;
+            font-size: 14px;
+        }
+    }
+}

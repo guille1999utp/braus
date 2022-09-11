@@ -9,7 +9,6 @@
     form{
         display: flex;
         flex-direction: column;
-        margin: 0 30px;
         .label{
             font-size: 15px;
         }
@@ -27,13 +26,22 @@
         button{
             font-size: 25px;
             color: black;
-            width: 300px;
+            width: 75%;
             background-color: black;
             color: white;
             font-family: 'Montserrat', sans-serif;
             font-weight: 600;
             border-radius: 10px;
             margin: 40px auto;
+        }
+    }
+}
+
+
+@media screen and (max-width:500px){
+    .grid-comisiones{
+        h2{
+            font-size: 34px;
         }
     }
 }

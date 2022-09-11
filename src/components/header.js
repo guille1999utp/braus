@@ -154,8 +154,7 @@ const Header = () => {
             borderBottom: "0px solid black",
           }}
         >
-          <ul className="redes">
-            <li>
+          <li>
               <AiOutlineMenu
                 fontSize={25}
                 color="white"
@@ -163,6 +162,8 @@ const Header = () => {
                 onClick={toggleDrawer(true)}
               />
             </li>
+          <ul className="redes">
+            
             <li>
               <a href="/crearproducto">
                 <AiFillFacebook fontSize={25} />
@@ -189,7 +190,7 @@ const Header = () => {
           </div>
         </div>
       </nav>
-      <Drawer  anchor={"left"} open={state} onClose={toggleDrawer(false)} onClick={toggleDrawer(false)}>
+      <Drawer  anchor={"left"} open={state} onClose={toggleDrawer(false)} onClick={toggleDrawer(false)} >
         {list("left")}
       </Drawer>
     </>

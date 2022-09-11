@@ -111,9 +111,9 @@ export const Porcentajes = () => {
 
   console.log(users)
   return (
-    <Box sx={{ flexGrow: 1 }}>
-    <Grid container spacing={2} sx={{mt:"29px"}}>
-      <Grid item xs={6} md={4} className="grid-comisiones">
+    <Box sx={{ flexGrow: 1,margin:"64px 0" }}>
+    <Grid container spacing={{ xs: 1, md: 2 }} columns={{ xs: 4, md: 12 }} >
+      <Grid item xs={4} md={4} className="grid-comisiones">
         <h2>comisiones</h2>
         <form className='form-porcentaje'>
         <label for=""  style={{marginTop:"40px"}}>1 Generacion</label>
@@ -127,7 +127,9 @@ export const Porcentajes = () => {
         <button style={{marginTop:"40px",cursor:"pointer"}} onClick={editPorcentajes} type="button">Guardar</button>
         </form>
       </Grid>
-      <Grid item xs={6} md={8} className="grid-comisiones" sx={{padding:"0 40px !important"}}>
+      <Grid item 
+          xs={4}
+          md={8} className="grid-comisiones" sx={{padding:"0 40px !important"}}>
         <h2 style={{marginBottom:"40px"}}>Porcentajes Acumulados</h2>
 
         <TableContainer component={Paper}>
