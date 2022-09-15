@@ -10,8 +10,8 @@ let navigate = useNavigate();
     <section className='banner'>
     </section>
     <div className='content-inicio'>
-    <p>este es la letra pequeña de brous</p>
-    <h2>Este es el inicio de brous</h2>
+    <p>BROUS ORIGINAL</p>
+    <h2>SOMETHING WE ALL WANT</h2>
     <div className='content-inicio-acciones'>
         <button onClick={()=>navigate("register")}>ACTIVAR MEMBRESIA</button>
         <button onClick={()=>navigate("catalogos")}>CATALOGO</button>

@@ -1,4 +1,4 @@
-const sitioUrl = 'http://localhost:4000';
+const sitioUrl = 'https://braus-backend-3gs50mw4r-guille1999utp.vercel.app';
 export const fetchstoken = async (endpoint, data, method = 'GET') =>{
 const url = `${ sitioUrl }/${ endpoint }`;
     

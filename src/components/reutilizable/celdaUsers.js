@@ -85,14 +85,13 @@ export const CeldaUsers = ({user,userRegister=true,func}) => {
   }})
   };
 
-
   return (
     <StyledTableRow key={user.usuario}>
     <StyledTableCell align="center">
       {user.usuario}
     </StyledTableCell>
     {(userRegister)?<StyledTableCell align="center">
-      {user.usuariosRef}
+      {user.usuariosRef.map((user,index)=>index === 0?  user : " - " + user)}
     </StyledTableCell>:null}
    {(userRegister)? <StyledTableCell align="center">{user.porcentaje}</StyledTableCell>:null}
     <StyledTableCell align="center" ><button style={{padding:"4px 14px",borderRadius:"3px",border:"solid 1px black",background:"black",color:"white",cursor:"pointer"}} type="button" onClick={deleteUser}>Borrar</button></StyledTableCell>

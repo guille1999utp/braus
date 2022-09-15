@@ -23,8 +23,10 @@ import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
+import { useMediaQuery } from "@mui/material";
 
 const Header = () => {
+  const matches = useMediaQuery('(max-width:500px)');
   const [state, setState] = useState(false);
   let location = useLocation();
   let navigate = useNavigate();
@@ -154,28 +156,32 @@ const Header = () => {
             borderBottom: "0px solid black",
           }}
         >
-          <li>
+            <div>
               <AiOutlineMenu
                 fontSize={25}
                 color="white"
-                style={{ marginRight: "20px", cursor: "pointer" }}
+                style={{ marginLeft: "20px", cursor: "pointer" }}
                 onClick={toggleDrawer(true)}
               />
-            </li>
+            </div>
+            {(location.pathname !== "/home")?<a className="whatsappButton" href="https://api.whatsapp.com/send?phone=573104096820&text=hola%20buenos%20dias,%20estoy%20interesado%20en%20el%20contenido%20de%20la%20pagina">
+            <AiOutlineWhatsApp fontSize={25} color="white" />
+            </a>:null}
+            
           <ul className="redes">
             
             <li>
-              <a href="/crearproducto">
+              <a href="https://www.facebook.com/BROUS-109184671936238">
                 <AiFillFacebook fontSize={25} />
               </a>
             </li>
             <li>
-              <a href="/ordenar">
+              <a href="https://www.instagram.com/brousoriginal/" >
                 <AiFillInstagram fontSize={25} />
               </a>
             </li>
             <li>
-              <a href="/chat">
+              <a href="https://api.whatsapp.com/send?phone=573104096820&text=hola%20buenos%20dias,%20estoy%20interesado%20en%20el%20contenido%20de%20la%20pagina">
                 <AiOutlineWhatsApp fontSize={25} />
               </a>
             </li>

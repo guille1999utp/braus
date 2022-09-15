@@ -56,7 +56,7 @@ import { fetchstoken } from '../helpers/fetchMethods';
         <p className='parrafoLogin'>ya tienes una cuenta?</p> <Link to='/login' className='vinculo'>Ingresa aqui</Link>
         </div>
         <form className='form-register' onSubmit={onSubmit}>
-        <input type="text"     value={Form.usuario} name="usuario" onChange={onChange} placeholder='Usuario' />
+        <input type="text"     value={Form.usuario} name="usuario" onChange={onChange} placeholder='Usuario de tu tarjeta' />
         <input type="text"     value={Form.nombre} name="nombre" onChange={onChange} placeholder='Nombre' />
         <input type="text"     value={Form.apellido} name="apellido" onChange={onChange} placeholder='Apellido' />
         <input type="email"    value={Form.correo} name="correo" onChange={onChange} placeholder='Email' />

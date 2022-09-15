@@ -20,18 +20,18 @@
         top: 40%;
         margin: auto;
         h2{
-            font-size: 46px;
+            font-size: 79px;
             color: white;
             text-align: center;
-            font-family: 'Montserrat', sans-serif;
             margin-bottom: 30px;
+            letter-spacing:5px;
         }
         p{
         
-            font-size: 20px;
+            font-size: 47px;
             color: white;
             text-align: center;
-            font-family: 'Montserrat', sans-serif;
+            letter-spacing: 1px;
             
         }
         .content-inicio-acciones{
@@ -39,17 +39,15 @@
             display: flex;
             flex-direction: row;
             margin: auto;
-            font-family: 'Montserrat', sans-serif;
             button{
                 cursor: pointer;
-                width: 265px;
+                width: 25%;
                 margin-right: 30px;
-                border-radius: 10px;
                 font-size: 20px;
-                padding: 8px 17px;
+                padding: 25px 17px;
                 background-color: white;
                 color: black;
-                font-family: 'Montserrat', sans-serif;
+                font-weight: 900;
                 transition: 0.4s;
                 border: none;
                 &:hover{
@@ -69,15 +67,21 @@
             top: 30%;
             h2{
                 font-size: 32px;
+                margin: 0 30px;
+                margin-bottom: 49px;
             }
             p{
-                font-size: 15px;
+                font-size: 20px;
+                margin-bottom: 9px;
             }
             .content-inicio-acciones{
                 flex-direction: column;
                 align-items: center;
                 button{
-                  margin: 20px;
+                  padding: 13px 17px;
+                  width: 65%;
+                  margin: 7px;
+                  font-size: 14px;
                 }
             }
         }

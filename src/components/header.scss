@@ -6,6 +6,19 @@
     padding: 20px;
     align-items: center;
     border-bottom: 1px solid gray;
+
+    .whatsappButton{
+        position: fixed;
+        background-color: black;
+        border-radius: 50%;
+        padding: 10px;
+        bottom: 100px;
+        right: 100px;
+        cursor: pointer;
+        border: 1px solid white;
+        align-items: center;
+        display: flex;
+    }
     .redes{
         position: fixed;
         display: flex;
@@ -40,7 +53,7 @@
 
 .MuiPaper-root.MuiPaper-elevation.MuiPaper-elevation16.MuiDrawer-paper.MuiDrawer-paperAnchorLeft{
 top: 101px;
-height: calc(100% - 101px);
+height: calc(100% - 148px);
 }     
 .MuiDrawer-root.MuiDrawer-modal.MuiModal-root{
     .MuiBackdrop-root{
@@ -55,6 +68,10 @@ height: calc(100% - 101px);
     .menu-first{
         .logo{
             height: 35px;
+        }
+        .whatsappButton{
+            bottom: 70px;
+            right: 30px;
         }
     }
 }
