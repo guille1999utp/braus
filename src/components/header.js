@@ -1,5 +1,5 @@
 import "./header.scss";
-import React, { useState } from "react";
+import React, { useState,useContext } from "react";
 import {
   AiFillFacebook,
   AiFillInstagram,
@@ -11,7 +11,7 @@ import {
 } from "react-icons/ai";
 import { MdCardMembership } from "react-icons/md";
 import { IoIosPeople } from "react-icons/io";
-import { RiNewspaperLine } from "react-icons/ri";
+import { RiLogoutCircleRLine } from "react-icons/ri";
 import { Link } from "react-router-dom";
 import Logo from "../assets/icono.png";
 import { useLocation, useNavigate } from "react-router-dom";
@@ -23,10 +23,10 @@ import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
-import { useMediaQuery } from "@mui/material";
+import { ContextAuth } from "../context/contextAuth";
 
 const Header = () => {
-  const matches = useMediaQuery('(max-width:500px)');
+  const  { Logout,User } = useContext(ContextAuth);
   const [state, setState] = useState(false);
   let location = useLocation();
   let navigate = useNavigate();
@@ -45,6 +45,11 @@ const Header = () => {
   const redirect = (direccion) => {
     navigate(direccion);
   };
+
+  const LogoutHeader = () => {
+    Logout();
+    redirect("/")
+  }
 
   const list = (anchor) => (
     <Box
@@ -118,24 +123,24 @@ const Header = () => {
         </ListItem>
         <Divider color="white" />
       </List>
-      <List>
+     {(User.rol)? <List>
         <ListItem
           key={"Terminos y Condiciones"}
           disablePadding
           onClick={() => redirect("/perfil")}
           sx={{ ":hover": { opacity: "0.58" } }}
         >
-          <ListItemButton>
+          <ListItemButton onClick={LogoutHeader}>
             <ListItemIcon>
-              <RiNewspaperLine color="white" />
+              <RiLogoutCircleRLine color="white" />
             </ListItemIcon>
             <ListItemText
-              primary={"Terminos y Condiciones"}
+              primary={"Cerrar sesion"}
               sx={{ color: "white" }}
             />
           </ListItemButton>
         </ListItem>
-      </List>
+      </List>:null}
     </Box>
   );
 
@@ -164,7 +169,7 @@ const Header = () => {
                 onClick={toggleDrawer(true)}
               />
             </div>
-            {(location.pathname !== "/home")?<a className="whatsappButton" href="https://api.whatsapp.com/send?phone=573104096820&text=hola%20buenos%20dias,%20estoy%20interesado%20en%20el%20contenido%20de%20la%20pagina">
+            {(location.pathname !== "/home")?<a className="whatsappButton" href="https://api.whatsapp.com/send?phone=573147089430&text=hola%20buenos%20dias,%20estoy%20interesado%20en%20el%20contenido%20de%20la%20pagina">
             <AiOutlineWhatsApp fontSize={25} color="white" />
             </a>:null}
             
@@ -175,19 +180,19 @@ const Header = () => {
                 <AiFillFacebook fontSize={25} />
               </a>
             </li>
-            <li>
+            <li>3
               <a href="https://www.instagram.com/brousoriginal/" >
                 <AiFillInstagram fontSize={25} />
               </a>
             </li>
             <li>
-              <a href="https://api.whatsapp.com/send?phone=573104096820&text=hola%20buenos%20dias,%20estoy%20interesado%20en%20el%20contenido%20de%20la%20pagina">
+              <a href="https://api.whatsapp.com/send?phone=573147089430&text=hola%20buenos%20dias,%20estoy%20interesado%20en%20el%20contenido%20de%20la%20pagina">
                 <AiOutlineWhatsApp fontSize={25} />
               </a>
             </li>
           </ul>
           <Link to="/" className="linkinicio">
-            <img src={Logo} alt="image-logo" className="logo" />
+            <img src={Logo} alt="logo" className="logo" />
           </Link>
           <div className="actiones">
             <Link to="/login" className="actions">

@@ -1,6 +1,5 @@
 import React from 'react'
 import "./inicio.scss"
-import Logo from "../assets/banner.png"
 import { useNavigate } from 'react-router-dom';
 
 export const Inicio = () => {

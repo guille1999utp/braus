@@ -53,7 +53,7 @@ import Swal from 'sweetalert2'
     <div className='login'>
         <h1>Login</h1>
         <div className='contenedor'>
-        <p className='parrafoLogin'>No tienes una cuenta?</p> <Link to='/register' className='vinculo'>registrate aqui</Link>
+        <p className='parrafoLogin'>No tienes una cuenta?</p> <Link to='/register' className='vinculo'>Actívala aquí</Link>
         </div>
         <form className='form-register' onSubmit={onSubmit}>
         <input name="usuario" value={Form.usuario}   onChange={onChange} type="text" placeholder='Usuario' />

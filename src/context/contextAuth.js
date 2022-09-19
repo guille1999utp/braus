@@ -14,18 +14,27 @@ export const ContextProvider = ({ children }) => {
 
     const AgregarUser = (user) =>{
       setUser(user);
-      
+    }
+
+    const Logout = () =>{
+      setUser(initData);
+      localStorage.removeItem('token');
     }
 
      useEffect(() => {
        const funcionRenovacion =  async() => {
             const token = localStorage.getItem('token');
             if(!token){
-             setUser(initData)
+             setUser({
+              nombre: "",
+              apellido: "",
+              usuario: "",
+              rol: "",
+              porcentaje: 0,
+          })
              return  false;
            }
             const res = await fetchCToken('renovacion');
-            console.log(res)
      
             if(res.ok){
              const {password,correo,creacion,...rest} = res.usuario
@@ -38,7 +47,7 @@ export const ContextProvider = ({ children }) => {
 
     
     return (
-        <ContextAuth.Provider value={{ User,AgregarUser }}>
+        <ContextAuth.Provider value={{ User,AgregarUser,Logout }}>
             { children }
         </ContextAuth.Provider>
     )

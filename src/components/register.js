@@ -53,7 +53,7 @@ import { fetchstoken } from '../helpers/fetchMethods';
     <div className='login'>
         <h1>Activar Membresia</h1>
         <div className='contenedor'>
-        <p className='parrafoLogin'>ya tienes una cuenta?</p> <Link to='/login' className='vinculo'>Ingresa aqui</Link>
+        <p className='parrafoLogin'>ya tienes cuenta?</p> <Link to='/login' className='vinculo'>Ingresa aqui</Link>
         </div>
         <form className='form-register' onSubmit={onSubmit}>
         <input type="text"     value={Form.usuario} name="usuario" onChange={onChange} placeholder='Usuario de tu tarjeta' />
