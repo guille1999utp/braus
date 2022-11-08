@@ -25,7 +25,6 @@ import { fetchstoken } from '../helpers/fetchMethods';
   const onSubmit = async(e) => {
     e.preventDefault();
     const resultlogin = await fetchstoken('register', Form , 'POST');
-    console.log(resultlogin)
     if(resultlogin.ok){
      const {__v,password,creacion,correo,...state} = resultlogin.newuser;
      localStorage.setItem('token',resultlogin.token);
@@ -51,9 +50,9 @@ import { fetchstoken } from '../helpers/fetchMethods';
       };
   return (
     <div className='login'>
-        <h1>Activar Membresia</h1>
+        <h1 className='registerMobile'>Activar Membresia</h1>
         <div className='contenedor'>
-        <p className='parrafoLogin'>ya tienes cuenta?</p> <Link to='/login' className='vinculo'>Ingresa aqui</Link>
+        <p className='parrafoLogin'>Ya tienes cuenta?</p> <Link to='/login' className='vinculo'>Ingresa aquí</Link>
         </div>
         <form className='form-register' onSubmit={onSubmit}>
         <input type="text"     value={Form.usuario} name="usuario" onChange={onChange} placeholder='Usuario de tu tarjeta' />

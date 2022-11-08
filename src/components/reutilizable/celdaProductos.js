@@ -162,6 +162,7 @@ export const CeldaProductos = ({ producto, idProducto,func }) => {
     <StyledTableRow >
       <StyledTableCell align="center">
         <img
+          alt={`tile producto`}
           src={urlmas.fotosdescripsion}
           width="200"
           onClick={editar? onFile : null}

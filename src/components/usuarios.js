@@ -24,6 +24,7 @@ const StyledTableCell = styled(TableCell)(({ theme }) => ({
 }));
 
 export const Usuarios = () => {
+  const [cambio, setCambio] = useState(0)
   const [Users, setUsers] = useState([]);
   const [formUser, setForm] = useState({
     usuario: "",
@@ -37,8 +38,7 @@ export const Usuarios = () => {
       }
     };
     funcionRenovacion();
-  }, []);
-  console.log("rep")
+  }, [cambio]);
   const createUser = async (e) => {
     e.preventDefault();    
     const createU = await fetchCToken("user", formUser, "POST");
@@ -99,6 +99,7 @@ export const Usuarios = () => {
   const filterUSer = (userFilter) => {
     setUsers(Users.filter((user)=>user.usuario !== userFilter))
   }
+  console.log("reo")
   return (
     <Box sx={{ flexGrow: 1,margin:"64px 0" }}>
       <Grid container spacing={{ xs: 1, md: 2 }} columns={{ xs: 4, md: 12 }} >
@@ -152,6 +153,7 @@ export const Usuarios = () => {
             <Table sx={{ minWidth: 700 }} aria-label="customized table">
               <TableHead>
                 <TableRow>
+                  <StyledTableCell align="center"></StyledTableCell>
                   <StyledTableCell align="center">Usuario</StyledTableCell>
                   <StyledTableCell align="center">Referidos</StyledTableCell>
                   <StyledTableCell align="center">Porcentaje</StyledTableCell>
@@ -160,7 +162,7 @@ export const Usuarios = () => {
               </TableHead>
               <TableBody>
                 {Users.filter((fil)=>fil.rol !== "Admin").map((user) => (
-                  <CeldaUsers func={filterUSer} user={user} />
+                  <CeldaUsers func={filterUSer} user={user} cambio={setCambio}/>
                 ))}
               </TableBody>
             </Table>

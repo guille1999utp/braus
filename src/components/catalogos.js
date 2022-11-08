@@ -26,7 +26,7 @@ const Catalogo = () => {
         {(ViewImage)?<Beneficios image={imageProducto} fun={setViewImage} />:null}
         <div className="homeAdmin" style={{justifyContent:matches?"center":"space-between",padding:matches?"20px":"2px"}}>
           {Products.map((product)=><div className="producto">
-            <img onClick={()=>{
+            <img alt={`tile producto ${product.titulo}`} onClick={()=>{
               setViewImage(true)
               setImageProducto(product.fotosdescripsion)
               }} src={product.fotosdescripsion}></img>

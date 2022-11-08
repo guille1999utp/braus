@@ -1,4 +1,4 @@
-const sitioUrl = 'https://braus-backend-3gs50mw4r-guille1999utp.vercel.app';
+const sitioUrl = 'https://braus-backend.vercel.app';
 export const fetchstoken = async (endpoint, data, method = 'GET') =>{
 const url = `${ sitioUrl }/${ endpoint }`;
     
@@ -32,7 +32,6 @@ const url = `${ sitioUrl }/${ endpoint }`;
                 }
                 
             });
-            console.log(resp)
 
             return await resp.json();
         } else {

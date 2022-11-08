@@ -4,6 +4,5 @@ import { ContextAuth } from "../context/contextAuth";
 
 export const RoutePrivate = () => {
   const  { User } = useContext(ContextAuth);
-  console.log(User)
     return User.rol === "Admin" || User.rol === "User"? <Outlet /> : <Navigate to="/login" />;
 }

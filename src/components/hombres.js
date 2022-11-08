@@ -88,7 +88,6 @@ export const Hombres = () => {
       productoNew = await fetchCToken('producto', Form , 'POST');
     }
     if(productoNew.ok){
-      console.log(productoNew)
       setProductos(productoNew.newProd.reverse())
       const Toast = Swal.mixin({
         toast: true,
@@ -133,10 +132,8 @@ export const Hombres = () => {
 
       const deletProduct = (id) =>{
         const filter = productos.filter((produc)=>{
-          console.log(produc.pid, id)
           return produc.pid !== id
         })
-        console.log(filter)
         setProductos(filter)
       } 
 

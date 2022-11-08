@@ -7,10 +7,10 @@ import {
   AiOutlineUser,
   AiOutlineMenu,
   AiOutlineShopping,
-  AiFillRead,
+  // AiFillRead,
 } from "react-icons/ai";
 import { MdCardMembership } from "react-icons/md";
-import { IoIosPeople } from "react-icons/io";
+// import { IoIosPeople } from "react-icons/io";
 import { RiLogoutCircleRLine } from "react-icons/ri";
 import { Link } from "react-router-dom";
 import Logo from "../assets/icono.png";
@@ -69,7 +69,7 @@ const Header = () => {
         <ListItem
           key={"Catalogo"}
           disablePadding
-          onClick={() => redirect("/catalogos")}
+          onClick={() => window.open("https://drive.google.com/drive/folders/1WIUFoupkStGQ2LsE6qdyfztM-S40n_c_")}
           sx={{ ":hover": { opacity: "0.58" } }}
         >
           <ListItemButton>
@@ -95,7 +95,7 @@ const Header = () => {
             />
           </ListItemButton>
         </ListItem>
-        <ListItem
+        {/* <ListItem
           key={"Referidos Brous"}
           disablePadding
           onClick={() => redirect("/video")}
@@ -107,8 +107,8 @@ const Header = () => {
             </ListItemIcon>
             <ListItemText primary={"Referidos Brous"} sx={{ color: "white" }} />
           </ListItemButton>
-        </ListItem>
-        <ListItem
+        </ListItem> */}
+        {/* <ListItem
           key={"Sobre Nostros"}
           disablePadding
           onClick={() => redirect("/perfil")}
@@ -120,7 +120,7 @@ const Header = () => {
             </ListItemIcon>
             <ListItemText primary={"Sobre Nostros"} sx={{ color: "white" }} />
           </ListItemButton>
-        </ListItem>
+        </ListItem> */}
         <Divider color="white" />
       </List>
      {(User.rol)? <List>
@@ -169,7 +169,7 @@ const Header = () => {
                 onClick={toggleDrawer(true)}
               />
             </div>
-            {(location.pathname !== "/home")?<a className="whatsappButton" href="https://api.whatsapp.com/send?phone=573147089430&text=hola%20buenos%20dias,%20estoy%20interesado%20en%20el%20contenido%20de%20la%20pagina">
+            {(location.pathname !== "/home")?<a className="whatsappButton" href="https://api.whatsapp.com/send?phone=573147089430&text=Hola,%20estoy%20interesado%20en%20la%20siguiente%20prenda...">
             <AiOutlineWhatsApp fontSize={25} color="white" />
             </a>:null}
             
@@ -186,7 +186,7 @@ const Header = () => {
               </a>
             </li>
             <li>
-              <a href="https://api.whatsapp.com/send?phone=573147089430&text=hola%20buenos%20dias,%20estoy%20interesado%20en%20el%20contenido%20de%20la%20pagina">
+              <a href="https://api.whatsapp.com/send?phone=573147089430&text=Hola,%20estoy%20interesado%20en%20la%20siguiente%20prenda...">
                 <AiOutlineWhatsApp fontSize={25} />
               </a>
             </li>

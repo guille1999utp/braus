@@ -39,7 +39,6 @@ export const Porcentajes = () => {
       const InfoFetchs = await fetchCToken(`info`);
 
       if(UsersFetchs.ok && InfoFetchs.ok ){
-        console.log(InfoFetchs)
         setUser(UsersFetchs.user.reverse());
         setForm({
           porcentaje1:InfoFetchs.info[0].porcentaje1,
@@ -56,7 +55,6 @@ export const Porcentajes = () => {
 
   const editPorcentajes = async() => {
     const editPorcents = await fetchCToken('porcentaje', formPorcen , 'PUT');
-    console.log(editPorcents)
     if(editPorcents.ok){
       const Toast = Swal.mixin({
         toast: true,
@@ -108,8 +106,6 @@ export const Porcentajes = () => {
   const userModify = (user) =>{
     setUser([user,...users.filter(userCompare=>userCompare.uid !== user.uid)])
   } 
-
-  console.log(users)
   return (
     <Box sx={{ flexGrow: 1,margin:"64px 0" }}>
     <Grid container spacing={{ xs: 1, md: 2 }} columns={{ xs: 4, md: 12 }} >
